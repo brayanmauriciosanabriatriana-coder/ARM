@@ -1,0 +1,41 @@
+{% extends 'core/base.html' %}
+
+{% block title %}Contacto | ARM{% endblock %}
+
+{% block content %}
+
+<h2>Contáctanos</h2>
+
+{% if mensaje_enviado %}
+    <div class="alert alert-success">
+        ¡Tu mensaje fue enviado correctamente!
+    </div>
+{% endif %}
+
+<form method="POST">
+    {% csrf_token %}
+    
+    <div class="mb-3">
+        {{ form.nombre.label_tag }}
+        {{ form.nombre }}
+    </div>
+
+    <div class="mb-3">
+        {{ form.email.label_tag }}
+        {{ form.email }}
+    </div>
+
+    <div class="mb-3">
+        {{ form.asunto.label_tag }}
+        {{ form.asunto }}
+    </div>
+
+    <div class="mb-3">
+        {{ form.mensaje.label_tag }}
+        {{ form.mensaje }}
+    </div>
+
+    <button type="submit" class="btn btn-success">Enviar mensaje</button>
+</form>
+
+{% endblock %}
